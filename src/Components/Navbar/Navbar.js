@@ -46,9 +46,9 @@ export default function Navbar() {
           <a href="#">Appointments</a>
         </li>
         <li className="link">
-          <a >
+         <Link to="/Sign_Up">
             <button className="btn1" as={Link} to="/Sign_Up">Sign Up</button>
-          </a>
+          </Link>
         </li>
         <li className="link">
           <Link to="/Login">
