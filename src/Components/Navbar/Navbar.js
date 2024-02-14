@@ -1,5 +1,6 @@
 import React from 'react';
 import './Navbar.css';
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
     const styleFill = { fill: "#3685fb" }
@@ -45,14 +46,14 @@ export default function Navbar() {
           <a href="#">Appointments</a>
         </li>
         <li className="link">
-          <a href="../Sign_Up//Sign_Up.html">
-            <button className="btn1">Sign Up</button>
+          <a >
+            <button className="btn1" as={Link} to="/Sign_Up">Sign Up</button>
           </a>
         </li>
         <li className="link">
-          <a href="../Login/Login.html">
-            <button className="btn1">Login</button>
-          </a>
+          <Link to="/Login">
+            <button className="btn1" as={Link} to="/Login">Login</button>
+          </Link>
         </li>
       </ul>
     </nav>
