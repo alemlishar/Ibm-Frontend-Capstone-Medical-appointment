@@ -29,6 +29,7 @@ const Sign_Up = () => {
             }),
         });
         const json = await response.json();
+        console.log("url" + API_URL + json);
         if (json.authtoken) {
             sessionStorage.setItem("auth-token", json.authtoken);
             sessionStorage.setItem("name", name);
