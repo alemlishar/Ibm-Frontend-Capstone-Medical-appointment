@@ -29,7 +29,7 @@ const Sign_Up = () => {
             }),
         });
         const json = await response.json();
-        console.log("url" + API_URL + json);
+       // console.log("url" + API_URL + json);
         if (json.authtoken) {
             sessionStorage.setItem("auth-token", json.authtoken);
             sessionStorage.setItem("name", name);
@@ -37,7 +37,7 @@ const Sign_Up = () => {
             sessionStorage.setItem("phone", phone);
             sessionStorage.setItem("email", email);
             // Redirect to home page
-            navigate("/");   //on directing to home page you need to give logic to change login and signup buttons with name of the user and logout button where you have implemented Navbar functionality
+           navigate("/");   //on directing to home page you need to give logic to change login and signup buttons with name of the user and logout button where you have implemented Navbar functionality
             window.location.reload();
         } else {
             if (json.errors) {
@@ -59,7 +59,7 @@ const Sign_Up = () => {
                  <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" name="email" id="email" className="form-control" placeholder="Enter your email" aria-describedby="helpId" />
                  {showerr && <div className="err" style={styleColor}>{showerr}</div>}
                  <label htmlFor="name">Name</label>
-                 <input value={name} onChange={(e) => setName(e.target.value)} type="text" name="nae" id="name" className="form-control" placeholder="Enter your name" aria-describedby="helpId" />
+                 <input value={name} onChange={(e) => setName(e.target.value)} type="text" name="name" id="name" className="form-control" placeholder="Enter your name" aria-describedby="helpId" />
                  <label htmlFor="phone">Phone</label>
                  <input value={phone} onChange={(e) => setPhone(e.target.value)} type="number" name="phone" id="phone" className="form-control" placeholder="Enter your phone number" aria-describedby="helpId" />
                  <label htmlFor="password">password</label>
