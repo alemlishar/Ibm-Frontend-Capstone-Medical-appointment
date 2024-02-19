@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
 import "./Navbar.css";
 
-
-
 const Navbar = () => {
+       
     const [click, setClick] = useState(false);
-
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [username, setUsername] = useState("");
     const[email,setEmail]=useState("");
@@ -61,13 +58,13 @@ const Navbar = () => {
           <Link to="/">Home</Link>
         </li>
         <li className="link">
-          <Link to="/search/doctors">Appointments</Link>
+          <Link to="/">Appointments</Link>
         </li>
         <li className="link">
-          <Link to="/healthblog">Health Blog</Link>
+          <Link to="/">Health Blog</Link>
         </li>
         <li className="link">
-         <Link to="/reviews">Reviews</Link>
+         <Link to="/">Reviews</Link>
         </li>
         {isLoggedIn?(
           <>
@@ -98,4 +95,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

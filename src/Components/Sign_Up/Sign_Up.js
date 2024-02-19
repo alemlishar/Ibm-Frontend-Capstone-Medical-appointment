@@ -8,11 +8,18 @@ const Sign_Up = () => {
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
     const [showerr, setShowerr] = useState('');
+    const [phoneerror, setphoneerror] = useState('');
     const navigate = useNavigate();
     const register = async (e) => {
+        /*if(phone.length < 10){
+        setphoneerror("phone number to short");
+        return;
+        }*/
+        setphoneerror("");
         e.preventDefault();
         // API Call
-        const response = await fetch(`${API_URL}/api/auth/register`, {
+        try {
+            const response = await fetch(`${API_URL}/api/auth/register`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -24,7 +31,13 @@ const Sign_Up = () => {
                 phone: phone,
             }),
         });
+        if(!response.ok){
+            console.log(response);
+        throw new Error("something went wrong")
+        }
         const json = await response.json();
+        setphoneerror("");
+        console.log("data" + json);
         if (json.authtoken) {
             sessionStorage.setItem("auth-token", json.authtoken);
             sessionStorage.setItem("name", name);
@@ -43,6 +56,9 @@ const Sign_Up = () => {
                 setShowerr(json.error);
             }
         }
+    } catch(err) {
+        console.log("ErrorName" + err);
+    }
     };
     return (
         <div className="container" style={{marginTop:'5%'}}>
@@ -57,6 +73,7 @@ const Sign_Up = () => {
                  <input value={name} onChange={(e) => setName(e.target.value)} type="text" name="name" id="name" className="form-control" placeholder="Enter your name" aria-describedby="helpId" />
                  <label htmlFor="email">Phone</label>
                  <input value={phone} onChange={(e) => setPhone(e.target.value)} type="tel" name="phone" id="phone" className="form-control" placeholder="Enter your phone" aria-describedby="helpId" />
+                 {phoneerror? <div className="err" style={{ color: 'red' }}>{"Phone number to Short"}</div> : ''}
                  <label htmlFor="password">Password</label>
                  <input value={password} onChange={(e) => setPassword(e.target.value)}  name="password" id="password" className="form-control" placeholder="Enter your password" aria-describedby="helpId" />                             
                  <div className="btn-group">
