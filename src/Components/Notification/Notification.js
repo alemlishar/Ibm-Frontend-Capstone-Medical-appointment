@@ -39,3 +39,5 @@ const Notification = ({ children }) => {
     </div>
   );
 };
+
+export default Notification;
